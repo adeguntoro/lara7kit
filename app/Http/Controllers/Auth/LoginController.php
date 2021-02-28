@@ -42,4 +42,13 @@ class LoginController extends Controller
     {
         return view('auth.login');
     }
+    
+    protected function validateLogin(Request $request)
+    {
+        $request->validate([
+            $this->username() => 'required|string',
+            'password' => 'required|string',
+            'captcha' => 'required|captcha',
+        ]);
+    }
 }

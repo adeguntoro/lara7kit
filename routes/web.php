@@ -25,3 +25,11 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//captcha
+// Route::get('/contact-form', [App\Http\Controllers\CaptchaServiceController::class, 'index']);
+Route::post('/captcha-validation', 'CaptchaServiceController@capthcaFormValidate');
+Route::get('/reload-captcha', 'CaptchaServiceController@reloadCaptcha');
+
+Route::resource('dropzone', 'DropzoneController');
+Route::post('store-media', 'DropzoneController@media');
