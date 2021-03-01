@@ -2,7 +2,12 @@
 
 use Illuminate\Support\Str;
 
+/*
+*Heroku config 
+*/
+$dburl = parse_url(getenv("CLEARDB_DATABASE_URL"));
 return [
+    
 
     /*
     |--------------------------------------------------------------------------
@@ -33,6 +38,7 @@ return [
     |
     */
 
+
     'connections' => [
 
         'sqlite' => [
@@ -41,6 +47,15 @@ return [
             'database' => env('DB_DATABASE', database_path('database.sqlite')),
             'prefix' => '',
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
+        ],
+
+        'cleardb' =>[
+            'driver' => 'mysql',
+            'host' => $databaseUrl['host'],
+            'port' => 3306,
+            'database' => substr($dburl["path"], 1),
+            'username' => $dburl['user'],
+            'password' => $dburl['pass'],
         ],
 
         'mysql' => [
