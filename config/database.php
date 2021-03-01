@@ -5,7 +5,12 @@ use Illuminate\Support\Str;
 /*
 *Heroku config 
 */
-$dburl = parse_url(getenv("CLEARDB_DATABASE_URL"));
+$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+$host = $url["host"];
+$username = $url["user"];
+$password = $url["pass"];
+$database = substr($url["path"], 1);
 return [
     
 
@@ -51,11 +56,13 @@ return [
 
         'cleardb' =>[
             'driver' => 'mysql',
-            'host' => $databaseUrl['host'],
-            'port' => 3306,
-            'database' => substr($dburl["path"], 1),
-            'username' => $dburl['user'],
-            'password' => $dburl['pass'],
+            'host' => $host,
+            'database' => $database,
+            'username' => $username,
+            'password' => $password,
+            'charset' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix' => '',
         ],
 
         'mysql' => [
