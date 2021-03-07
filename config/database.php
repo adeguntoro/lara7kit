@@ -7,10 +7,12 @@ use Illuminate\Support\Str;
 */
 $url = parse_url(getenv("DATABASE_URL"));
 
+/*
 $host = $url["host"];
 $username = $url["user"];
 $password = $url["pass"];
 $database = substr($url["path"], 1);
+*/
 return [
     
 
@@ -54,16 +56,16 @@ return [
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
         ],
 
+        /*
         'cleardb' =>[
             'driver' => 'mysql',
-            'host' => $host,
-            'database' => $database,
-            'username' => $username,
-            'password' => $password,
-            'charset' => 'utf8',
-            'collation' => 'utf8_unicode_ci',
+            'host' => $url["host"],
+            'database' => substr($url["path"], 1),
+            'username' => $url["user"],
+            'password' => $url["pass"],
             'prefix' => '',
         ],
+        */
 
         'mysql' => [
             'driver' => 'mysql',

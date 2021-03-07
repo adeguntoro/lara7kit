@@ -32,4 +32,7 @@ Route::post('/captcha-validation', 'CaptchaServiceController@capthcaFormValidate
 Route::get('/reload-captcha', 'CaptchaServiceController@reloadCaptcha');
 
 Route::resource('dropzone', 'DropzoneController');
+Route::resource('news', 'NewsController');
 Route::post('store-media', 'DropzoneController@media');
+
+Route::get('dashboard', 'Dasboard@index');

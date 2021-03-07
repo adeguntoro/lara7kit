@@ -12,9 +12,9 @@ return [
         'encrypt' => false,
     ],
     'math' => [
-        'length' => 9,
-        'width' => 120,
-        'height' => 36,
+        'length' => 10,
+        'width' => 200,
+        'height' => 80,
         'quality' => 90,
         'math' => true,
     ],
